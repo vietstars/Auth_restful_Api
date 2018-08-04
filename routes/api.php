@@ -24,9 +24,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	}
 });
 
-// Route::apiResource('contact','Api\ContactController');
-Route::middleware('auth:api')->get('contact',['as' => 'contact.all', 'uses' => 'Api\ContactController@index']);
-Route::middleware('auth:api')->get('contact/{contact}',['as' => 'contact.detail', 'uses' => 'Api\ContactController@show']);
-Route::middleware('auth:api')->post('contact',['as' => 'contact.new', 'uses' => 'Api\ContactController@store']);
-Route::middleware('auth:api')->put('contact',['as' => 'contact.update', 'uses' => 'Api\ContactController@update']);
-Route::middleware('auth:api')->delete('contact/{contact}',['as' => 'contact.delete', 'uses' => 'Api\ContactController@destroy']);
+Route::apiResource('contact','Api\ContactController');
+// Route::middleware('auth:api')->get('contact',['as' => 'contact.all', 'uses' => 'Api\ContactController@index']);
+// Route::middleware('auth:api')->get('contact/{id}',['as' => 'contact.detail', 'uses' => 'Api\ContactController@show']);
+// Route::middleware('auth:api')->post('contact',['as' => 'contact.new', 'uses' => 'Api\ContactController@store']);
+// Route::middleware('auth:api')->put('contact',['as' => 'contact.update', 'uses' => 'Api\ContactController@update']);
+// Route::middleware('auth:api')->delete('contact/{contact}',['as' => 'contact.delete', 'uses' => 'Api\ContactController@destroy']);
