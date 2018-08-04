@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Contact;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
@@ -35,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'activated' => 'boolean'
     ];
+
+    /**
+     * contact
+     * @return [type] [description]
+     */
+    public function contact()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

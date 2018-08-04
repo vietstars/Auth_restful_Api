@@ -45,6 +45,7 @@ class LoginController extends Controller
     public function activation(Request $request, User $user)
     {
         $user = User::where('activated',false)
+            ->where('id',$user->id)
             ->firstOrFail();                    
         $user->update(['activated' => true]);
         return redirect()->route('login')->with('status', 'Your account have been activated successfully !');

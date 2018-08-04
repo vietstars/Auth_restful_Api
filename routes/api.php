@@ -15,7 +15,7 @@ use Illuminate\Auth\AuthenticationException;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-	if(Auth::user()->activated){
+	if($request->user()->activated){
 		return response()->json([
 	        'data'     => $request->user(),
 	    ], 400);
@@ -23,3 +23,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 		throw new AuthenticationException('Unauthenticated.');
 	}
 });
+
+// Route::apiResource('contact','Api\ContactController');
+Route::middleware('auth:api')->get('contact',['as' => 'contact.all', 'uses' => 'Api\ContactController@index']);
+Route::middleware('auth:api')->get('contact/{contact}',['as' => 'contact.detail', 'uses' => 'Api\ContactController@show']);
+Route::middleware('auth:api')->post('contact',['as' => 'contact.new', 'uses' => 'Api\ContactController@store']);
+Route::middleware('auth:api')->put('contact',['as' => 'contact.update', 'uses' => 'Api\ContactController@update']);
+Route::middleware('auth:api')->delete('contact/{contact}',['as' => 'contact.delete', 'uses' => 'Api\ContactController@destroy']);
